@@ -31,6 +31,24 @@ class LinkedList:
         while temp is not None:
             print(temp.value)
             temp = temp.next
+    
+    def pop(self):
+        if self.head == None:
+            return None
+        
+        temp = self.head
+        pre= None
+
+        while temp.next != None:
+            pre = temp
+            temp = temp.next
+        self.tail = pre
+        pre.next=None
+
+        return temp
+
+        
+
 
     
 if __name__ == "__main__":
@@ -39,3 +57,13 @@ if __name__ == "__main__":
     myLinkList.append(30)
 
     myLinkList.printlist()
+
+    node = myLinkList.pop()
+    print(node.value)
+    
+
+    myLinkList.printlist()
+
+
+
+
