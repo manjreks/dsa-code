@@ -26,6 +26,21 @@ class LinkedList:
 
         return True
     
+    def prepend(self,value):
+
+        new_node = Node(value)
+        if self.head == None:
+            self.head=new_node
+            self.tail=new_node   
+        else:
+            temp = self.head
+            self.head = new_node
+            new_node.next = temp
+    
+        self.length +=1
+
+
+    
     def printlist(self):
         temp = self.head
 
@@ -46,24 +61,67 @@ class LinkedList:
         self.tail = pre
         pre.next=None
 
-        return temp
+        self.length -= 1
 
-        
+        return temp
+    
+    def popfirst(self):
+        if self.length == 0:
+            return None
+        else:
+            temp = self.head
+            self.head = self.head.next
+            temp.next = None
+            self.length -= 1
+            if self.length == 0:
+                self.tail = None
+
+            return temp
+
+
+
+def test_append(myLinkedList):
+
+    myLinkedList.append(20)
+    myLinkedList.append(30)
+    myLinkedList.printlist()
+    print("linkedlist appended")
+
+    
+def test_pop(myLinkedList):
+    node = myLinkedList.pop()
+    print("popped value",node.value)
+
+def test_prepend(myLinkedList):
+    node = myLinkedList.prepend(40)
+    print("linked list prepend")
+    myLinkedList.printlist()
+
+def test_popfirst(myLinkedList):
+    node =myLinkedList.popfirst()
+    myLinkedList.printlist()
+    print(node.value)
+
+
+
+
+
+    
+    
+      
 
 
     
 if __name__ == "__main__":
-    myLinkList = LinkedList(10)
-    myLinkList.append(20)
-    myLinkList.append(30)
+    myLinkedList = LinkedList(10)
+    #test_append(myLinkedList)
+    #test_pop(myLinkedList)
+    #test_prepend(myLinkedList)
+    test_popfirst(myLinkedList)
 
-    myLinkList.printlist()
 
-    node = myLinkList.pop()
-    print(node.value)
-    
 
-    myLinkList.printlist()
+
 
 
 
