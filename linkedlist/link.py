@@ -1,3 +1,4 @@
+#linkedlist ds code
 class Node:
     def __init__(self,value):
         self.value = value
